@@ -1,6 +1,6 @@
 var taskbarTasks, body;
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("hey");
+// document.addEventListener("DOMContentLoaded", function () {
+  console.log("script.js");
   body = document.querySelector("body");
   taskbarTasks = document.querySelector("div#start-menu div");
 
@@ -115,20 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let windowCount = 0; // To generate unique IDs for windows
 
-  document
-    .querySelector("div.folder#resume")
-    .addEventListener("click", (event) => {
-      newNotepad();
-      console.log("clicked");
-    });
-
   function newNotepad() {
     const windowId = `window-${windowCount++}`;
     const title = "Resume - Notepad";
 
     var newElement = document.createElement("div");
     newElement.className = "window";
-    newElement.classList.add("fulldisplay");
+    // newElement.classList.add("fulldisplay");
     newElement.classList.add("inFocus");
     newElement.id = windowId; // Assign a unique ID to the window
     newElement.innerHTML = createNewNotepad(title, windowId);
@@ -228,53 +221,43 @@ document.addEventListener("DOMContentLoaded", function () {
     //close window
     document
       .querySelector("div.window .window-header-right img#close")
-      .addEventListener("click", () => {
-        setTimeout(() => {
-          body.removeChild(body.firstChild);
-          taskbarTasks.removeChild(taskbarTasks.firstChild);
-        }, 500);
+      .addEventListener("click", (event) => {
+        closeWindowHelper(event);
       });
   }
 
-  // function createNewNotepad(title, windowId) {
-  //     var innerCode =
-  //         `<div class="window-header">
-  //             <!-- Add close button with the window ID as a data attribute -->
-  //             <img src="essentials/images/notepad-small.png" id="window-icon">
-  //             <div id="window-title">${title}</div>
-  //             <img src="essentials/images/close.png" class="pointer" id="close" data-window="${windowId}">
-  //         </div>
-  //         <!-- rest of the code ... -->`;
-
-  //     return innerCode;
-  // }
+function closeWindowHelper(event) {
+  const clickedWindow = event.target.closest(".window");
+  const clickedTask = event.target.closest(".task");
+  let targetId;
+  if (clickedWindow) {
+      targetId = clickedWindow.id;
+  } else if (clickedTask) {
+      targetId = clickedTask.id;
+  }
+  const windowToClose = document.getElementById(targetId);
+  const taskToClose = document.querySelector(`div#start-menu div.taskbar-apps div#${targetId}`);
+  if (windowToClose) {
+    setTimeout(() => {
+      body.removeChild(windowToClose);
+      taskbarTasks.removeChild(taskToClose);
+    }, 200);
+  }
+}
 
   function newTask(title, windowId) {
     var newTask = document.createElement("div");
     newTask.className = "task";
+    newTask.id = windowId;
     newTask.innerHTML = `<img id="task-icon" src="essentials/images/notepad-small.png">
-            <div id="task-name" data-window="${windowId}">${title}</div>`;
+            <div id="task-name">${title}</div>`;
     taskbarTasks.appendChild(newTask);
 
     // Add event listener to the taskbar app for closing the corresponding window
-    newTask.addEventListener("click", () => {
-      const windowToClose = document.getElementById(windowId);
-      if (windowToClose) {
-        body.removeChild(windowToClose);
-        taskbarTasks.removeChild(newTask);
-      }
+    newTask.addEventListener("click", (event) => {
+      closeWindowHelper(event);
     });
   }
-
-  //maximize window
-  // document.querySelector("div.window .window-header-right img#max").addEventListener("click", () => {
-  //     setTimeout(() => {
-  //         console.log("maximize");
-  //         document.querySelector("div.window").classList.add = "fulldisplay";
-  //         console.log(document.querySelector("div.window").classList);
-  //     }, 500);
-  // });
-  // }
 
   // //task load cursor animation
   function defWait() {
@@ -287,20 +270,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       body.classList.add("wait");
     }, 600);
-    // setTimeout(() => {
-    //     body.classList.remove("wait");
-    // }, 200);
   }
 
-  // function newTask(title) {
-  //     var newTask = document.createElement("div");
-  //     newTask.class = "task";
-  //     newTask.innerHTML =
-  //     `<img id="task-icon" src="essentials/images/notepad-small.png">
-  //     <div id="task-name">${title}</div>`;
-  //     taskbarTasks.appendChild(newTask);
-  // }
-
+  //taskbar time
   setInterval(() => {
     const now = new Date();
     let hours = now.getHours();
@@ -314,8 +286,12 @@ document.addEventListener("DOMContentLoaded", function () {
       " " +
       ampm;
   }, 1000);
-});
+// });
 
 //add out of focus
 //fix taskbar apps
 //link taskbar app with window using id
+//make folders as different sections 
+//also add my computer where we can add about me
+//and rest folder/file will lead to different sections
+
