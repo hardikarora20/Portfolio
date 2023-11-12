@@ -2,6 +2,7 @@
     <head>
         <script src="script.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="styles/reset.css">
         <link rel="stylesheet" href="styles/style.css">
         <title>Hardik Arora | Portfolio</title>
         <link rel="icon" href="images/icon.png">
@@ -10,8 +11,43 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
     </head>
     <body class="noselect default">
-        <div id="fixed-background"></div>
+      <!-- <div class="window outOfFocus inFocus" id="window-0" style="display: flex;"><div class="window-header">
+        <div class="window-header-left">
+            <img src="essentials/images/notepad-small.png" id="window-icon">
+            <div id="window-title">
+                Resume - Notepad
+            </div>
+        </div>
+        <div class="window-header-right">
+            <img src="essentials/images/minimize.png" alt="" id="min" class="disabled">
+            <img src="essentials/images/maximize.png" alt="" id="max" class="disabled">
+            <img src="essentials/images/close.png" class="pointer" alt="" id="close">
+        </div>
+        </div>
+        <ul class="window-toolbar">
+            <li>File</li>
+            <li>Edit</li>
+            <li>Format</li>
+            <li>View</li>
+            <li>Help</li>
+        </ul>
+        <div class="tabs">
+          <div class="left-tab">
 
+          </div>
+          <div class="right-tab">
+            <div class="sections">
+              <div class="hdd-section">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+        <div id="fixed-background"></div>
+      
         <div id="start-menu">
             <a href="#home">
                 <img src="essentials/images/startbutton.png">
@@ -34,9 +70,13 @@
         <div class="container">
             <div class="page" id="home">
               <div class="folder-container">
+                <div class="folder pointer" id="computer">
+                  <img src="essentials/images/My Computer.ico" class="folder-icon">
+                  <div class="folder-title">My Computer</div>
+                </div>
                 <div class="folder pointer" id="resume">
-                  <img src="essentials/images/Folder Closed.ico" class="folder-icon">
-                  <div class="folder-title">Resume</div>
+                  <img src="essentials/images/TXT.png" class="folder-icon">
+                  <div class="folder-title">Resume.txt</div>
                 </div>
                 <div class="folder pointer" id="linkedin">
                   <img src="essentials/images/Folder Closed.ico" class="folder-icon">

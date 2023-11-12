@@ -112,14 +112,28 @@ a{
     font-size: 2.5vh;
     display: flex;
     margin: 3px 0px;
-    border: 1px outset #00599d;
-    -webkit-box-shadow: -5px 5px 5px rgba(0,0,0,0.4);
-    -moz-box-shadow: -5px 5px 5px rgba(0,0,0,0.4);
     padding: 0px 2px;
-    background: linear-gradient(135deg, rgba(106,149,243,1) 0%, rgba(84,139,240,1) 9%, rgba(62,117,239,1) 16%, rgba(56,112,240,1) 51%, rgba(51,105,232,1) 92%);
     width: 120px;
     border-radius: 4px;
     align-items: center;
+    background-color: rgb(60, 129, 243) !important;
+    box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
+}
+
+.focused-task{
+    background-color: rgb(30, 82, 183) !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.7) 1px 0px 1px inset !important;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.7) 1px 0px 1px inset !important;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.7) 1px 0px 1px inset !important;
+}
+
+.normal-task{
+    /* background-color: rgb(60, 129, 243) !important;
+    box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important; */
 }
 
 .taskbar-right{
@@ -182,7 +196,7 @@ a{
     transition: 0.2s all ease-in-out;
 }
 
-.window-header-right #close:hover{
+.glowOnHover:hover{
     filter: brightness(1.2);
     user-select: none;
 }
@@ -233,9 +247,9 @@ a{
 
 .fulldisplay{
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 95vh !important;
     width: 100vw !important;
 }
 
@@ -247,8 +261,13 @@ a{
 
 .inFocus{
     /* opacity: 0.9; */
-    z-index: 500;
+    z-index: 700;
+    display: flex !important;
     filter: grayscale(0);
+}
+
+.hidden-window{
+    display: none !important;
 }
 
 .container{
@@ -292,14 +311,19 @@ a{
     position: relative;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-items: center;
+    align-items: center;
+    justify-content: center;
     /* padding: 1rem 0rem; */
 }
 
 .folder-container .folder-icon{
     pointer-events: none;
     height: 8vh;
+}
+
+.folder-icon{
+    height: 7vh !important;
+    width: 7vh;
 }
 
 .folder:hover{
@@ -413,9 +437,3 @@ img#project-image{
 @media screen and (orientation: portrait)  {
 
 }
-
-focused .taskbackground-color: rgb(30, 82, 183);
-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.7) 1px 0px 1px inset;
-
-normal .taskbackground-color: rgb(60, 129, 243);
-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset;

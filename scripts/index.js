@@ -3,7 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document
         .querySelector("div.folder#resume")
         .addEventListener("click", (event) => {
-        newNotepad();
+        newWindow(resumeNotepad);
+        console.log("clicked");
+        });
+
+    document
+        .querySelector("div.folder#computer")
+        .addEventListener("click", (event) => {
+        newWindow(explorer);
         console.log("clicked");
         });
 });
