@@ -1,23 +1,98 @@
 var taskbarTasks, body;
 // document.addEventListener("DOMContentLoaded", function () {
-  console.log("script.js");
-  body = document.querySelector("body");
-  taskbarTasks = document.querySelector("div#start-menu div");
+console.log("script.js");
+body = document.querySelector("body");
+taskbarTasks = document.querySelector("div#start-menu div");
 
-  
-  function explorer() {
-    const title = "My Computer";
-    createNewExplorer(title, "explorer-small.png")
-  }
-  
-  function createNewExplorer(title, image) {
-    var explorerInnerCode = '<div class="window-header">';
-    return explorerInnerCode;
-  }
+function explorer(title, icon) {
+  // const title = "My Computer";
+  return createNewExplorer(title, icon);
+}
 
-  function resumeNotepad() {
-    const title = "Resume.txt";
-    const defText = `
+function createNewExplorer(title, image) {
+  var explorerInnerCode = `
+  <div class="window-header">
+    <div class="window-header-left">
+      <img src="essentials/images/${image}" id="window-icon">
+      <div id="window-title">
+          ${title}
+      </div>
+    </div>
+    <div class="window-header-right">
+      <img src="essentials/images/Minimize.png" alt="" id="min" class="pointer glowOnHover">
+      <img src="essentials/images/Maximize.png" alt="" id="max" class="pointer glowOnHover">
+      <img src="essentials/images/Exit.png" class="pointer glowOnHover" alt="" id="close">
+    </div>
+    </div>
+    <ul class="window-toolbar clickDisabled">
+        <li>File</li>
+        <li>Edit</li>
+        <li>View</li>
+        <li>Favorites</li>
+        <li>Tools</li>
+        <li>Help</li>
+      </ul>
+      <div class="second-toolbar clickDisabled">
+        <div class="second-toolbar-1">
+          <div class="second-toolbar-tool">
+            <img class="icon" src="essentials/images/back.png">
+            <div class="title">
+              Back
+            </div>
+          </div>
+          <div class="second-toolbar-tool">
+            <img class="icon" src="essentials/images/Forward.png">
+            <div class="title">
+              Forward
+            </div>
+          </div>
+          <div class="second-toolbar-tool">
+            <img class="icon" src="essentials/images/Up.png">
+            <div class="title">
+              Up
+            </div>
+          </div>
+        </div>
+        <div class="second-toolbar-2">
+          <div class="second-toolbar-tool">
+            <img class="icon" src="essentials/images/Search.png">
+            <div class="title">
+              Search
+            </div>
+          </div>
+          <div class="second-toolbar-tool">
+            <img class="icon" src="essentials/images/Folder View.png">
+            <div class="title">
+              Folders
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="files-container">
+        <div class="left-bar clickDisabled">
+          <div class="tab">
+            <div class="tab-title">File and Folder Tasks</div>
+            <img src="essentials/images/downarrow.png" id="down-arrow">
+          </div>
+          <div class="tab">
+            <div class="tab-title">Other Places</div>
+            <img src="essentials/images/downarrow.png" id="down-arrow">
+          </div>
+          <div class="tab">
+            <div class="tab-title">Details</div>
+            <img src="essentials/images/downarrow.png" id="down-arrow">
+          </div>
+        </div>
+        <div class = "in-folder">
+          ${filesToDiv(title)}
+        </div>
+      </div>
+      </div>`;
+  return explorerInnerCode;
+}
+
+function resumeNotepad(title, icon) {
+  const defText = `
   RRRRR  EEEEE  SSSSS  U   U  M     M  EEEEE
   R   R  E      S      U   U  M M M M  E
   RRRRR  EEEE   SSSSS  U   U  M  M  M  EEEE
@@ -96,11 +171,11 @@ var taskbarTasks, body;
   H   H  A   A  R  R   D   D   I   K  K      A   A  R  R  O   O R  R  A   A
   H   H  A   A  R   R  DDDD   III  K   K     A   A  R   R  OOO  R   R A   A
 `;
-    return createNewNotepad(title, defText, "notepad-small.png");
-  }
+  return createNewNotepad(title, defText, icon);
+}
 
-  function createNewNotepad(title, defText, image) {
-    var notepadInnerCode = `<div class="window-header">
+function createNewNotepad(title, defText, image) {
+  var notepadInnerCode = `<div class="window-header">
     <div class="window-header-left">
         <img src="essentials/images/${image}" id="window-icon">
         <div id="window-title">
@@ -123,229 +198,266 @@ var taskbarTasks, body;
     <textarea id="notepad-text" class="default" disabled>
         ${defText}
     </textarea>`;
-    return notepadInnerCode;
+  return notepadInnerCode;
+}
+
+function filesInFolder(title){
+  var fileList = [];
+  
+}
+
+function filesToDiv(title){
+  var fileList = [];
+  var list = "";
+  switch (title) {
+    case "Projects":
+      fileList = ["Portfolio:web:www.github.com/hardikarora20/Portfolio",
+                  "SimonGame:web:www.github.com/hardikarora20/Simon",
+                  "CodeKeeper:java:www.github.com/hardikarora20/CodeKeeper", 
+                  "CarePlus:java:www.github.com/hardikarora20/CarePlus", 
+                  "Medley:web:www.github.com/hardikarora20/Medley"];
+      break;
+    case "Profiles":
+      fileList = ["GitHub:github:www.github.com/hardikarora20",
+                  "Leetcode:leetcode:www.leetcode.com/hardikarora",
+                  "LinkedIn:linkedin:www.linkedin.com/in/hardikarora20"];
+      break;
+    case "Contact":
+      fileList = ["Email:github:www.github.com/hardikarora20",
+                  "Resume:linkedin:www.linkedin.com/in/hardikarora20"];
+      break;
   }
+  console.log(fileList);
+  fileList.forEach(file => {
+    var titleLang = file.split(":");
+    // console.log(titleLang[2]);
+    list += `
+    <a href = "https://${titleLang[2]}" target = "_blank">
+      <div class="folder pointer" id = "${titleLang[0]}">
+        <img src="essentials/images/${titleLang[1]}.png" class="folder-icon">
+        <div class="folder-title">${titleLang[0]}</div>
+        <img src="essentials/images/shortcut.png" id="shortcut">
+      </div>
+    </a>`;
+  });
+  return list;
+}
 
-  let windowCount = 0; // To generate unique IDs for windows
+let windowCount = 0; // To generate unique IDs for windows
 
-  function newWindow(type) {
-    const windowId = `window-${windowCount++}`;
-    const title = "Resume - Notepad";
+function newWindow(type, title, icon) {
+  const windowId = `window-${windowCount++}`;
+  console.log(icon);
+  var newElement = document.createElement("div");
+  newElement.className = "window";
+  // newElement.classList.add("fulldisplay");
+  newElement.classList.add("inFocus");
+  newElement.id = windowId; // Assign a unique ID to the window
+  newElement.innerHTML = type(title, icon);
+  newElement.style.opacity = 0;
+  newTask(title, windowId, icon);
+  defWait();
+  body.insertBefore(newElement, body.firstChild);
+  focusTask(`window-${windowCount - 1}`);
+  setTimeout(() => {
+    document.querySelector(`#${windowId}`).style.opacity = 1;
+    body.classList.remove("wait");
+    console.log(document.querySelector(`#${windowId}`).classList);
+  }, 1000);
 
-    var newElement = document.createElement("div");
-    newElement.className = "window";
-    // newElement.classList.add("fulldisplay");
-    newElement.classList.add("inFocus");
-    newElement.id = windowId; // Assign a unique ID to the window
-    newElement.innerHTML = type();
-    newElement.style.opacity = 0;
-    newTask(title, windowId);
-    defWait();
-    body.insertBefore(newElement, body.firstChild);
-    focusTask(`window-${windowCount - 1}`);
-    setTimeout(() => {
-      document.querySelector(`#${windowId}`).style.opacity = 1;
-      body.classList.remove("wait");
-      console.log(document.querySelector(`#${windowId}`).classList);  
-    }, 1000);
+  document.querySelector("div.window").addEventListener("click", (event) => {
+    console.log("clicked window");
+  });
 
-    document.querySelector("div.window").addEventListener("click", (event) => {
-      console.log("clicked window");
+  // Making window draggable and also to not move it out of screen
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  document
+    .querySelector("div.window .window-header")
+    .addEventListener("mousedown", (event) => {
+      isDragging = true;
+
+      // Calculate the offset from the mouse click to the window's top-left corner
+      offsetX =
+        event.clientX -
+        parseFloat(getComputedStyle(document.querySelector("div.window")).left);
+      offsetY =
+        event.clientY -
+        parseFloat(getComputedStyle(document.querySelector("div.window")).top);
     });
 
-    // Making window draggable and also to not move it out of screen
-    let isDragging = false;
-    let offsetX, offsetY;
+  document.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+      // Calculate the new position of the window based on the mouse position
+      let newX = event.clientX - offsetX;
+      let newY = event.clientY - offsetY;
 
-    document
-      .querySelector("div.window .window-header")
-      .addEventListener("mousedown", (event) => {
-        isDragging = true;
+      // Ensure the window stays within the screen boundaries
+      const maxX =
+        window.innerWidth -
+        parseFloat(
+          getComputedStyle(document.querySelector("div.window")).width
+        );
+      const maxY =
+        window.innerHeight -
+        parseFloat(
+          getComputedStyle(document.querySelector("div.window")).height
+        );
 
-        // Calculate the offset from the mouse click to the window's top-left corner
-        offsetX =
-          event.clientX -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).left
-          );
-        offsetY =
-          event.clientY -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).top
-          );
-      });
+      newX = Math.min(Math.max(0, newX), maxX);
+      newY = Math.min(Math.max(0, newY), maxY);
 
-    document.addEventListener("mousemove", (event) => {
-      if (isDragging) {
-        // Calculate the new position of the window based on the mouse position
-        let newX = event.clientX - offsetX;
-        let newY = event.clientY - offsetY;
+      // Update the window's position
+      document.querySelector("div.window").style.left = newX + "px";
+      document.querySelector("div.window").style.top = newY + "px";
+    }
+  });
 
-        // Ensure the window stays within the screen boundaries
-        const maxX =
-          window.innerWidth -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).width
-          );
-        const maxY =
-          window.innerHeight -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).height
-          );
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
 
-        newX = Math.min(Math.max(0, newX), maxX);
-        newY = Math.min(Math.max(0, newY), maxY);
+  // In focus and out of focus windows
+  document.addEventListener("mousedown", (event) => {
+    let selectedId = getSelectedIdFromEvent(event);
+    focusTask(selectedId);
+  });
 
-        // Update the window's position
-        document.querySelector("div.window").style.left = newX + "px";
-        document.querySelector("div.window").style.top = newY + "px";
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  //close window
+  document
+    .querySelector("div.window .window-header-right img#close")
+    .addEventListener("click", (event) => {
+      closeWindowHelper(event);
+    });
+
+  document
+    .querySelector("div.window .window-header-right img#max")
+    .addEventListener("click", (event) => {
+      const id = getSelectedIdFromEvent(event);
+      const currentWindow = document.querySelector(`div.window#${id}`);
+      if (currentWindow.classList.contains("fulldisplay")) {
+        currentWindow.classList.toggle("fulldisplay");
+        document
+          .querySelector(`div.window#${id} img#max`)
+          .setAttribute("src", "essentials/images/Maximize.png");
+      } else {
+        currentWindow.classList.toggle("fulldisplay");
+        document
+          .querySelector(`div.window#${id} img#max`)
+          .setAttribute("src", "essentials/images/Restore.png");
       }
     });
 
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
+  document
+    .querySelector("div.window .window-header-right img#min")
+    .addEventListener("click", (event) => {
+      const id = getSelectedIdFromEvent(event);
+      document.querySelector(`div.window#${id}`).classList.add("hidden-window");
+    });
+}
+
+function newNotepad() {
+  const windowId = `window-${windowCount++}`;
+  const title = "Resume - Notepad";
+
+  var newElement = document.createElement("div");
+  newElement.className = "window";
+  // newElement.classList.add("fulldisplay");
+  newElement.classList.add("inFocus");
+  newElement.id = windowId; // Assign a unique ID to the window
+  newElement.innerHTML = resumeNotepad();
+  newElement.style.display = "none";
+  newTask(title, windowId);
+  defWait();
+  body.insertBefore(newElement, body.firstChild);
+  focusTask(`window-${windowCount - 1}`);
+  setTimeout(() => {
+    document.querySelector(`#${windowId}`).style.display = "flex";
+    body.classList.remove("wait");
+  }, 1000);
+
+  document.querySelector("div.window").addEventListener("click", (event) => {
+    console.log("clicked window");
+  });
+
+  // Making window draggable and also to not move it out of screen
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  document
+    .querySelector("div.window .window-header")
+    .addEventListener("mousedown", (event) => {
+      isDragging = true;
+
+      // Calculate the offset from the mouse click to the window's top-left corner
+      offsetX =
+        event.clientX -
+        parseFloat(getComputedStyle(document.querySelector("div.window")).left);
+      offsetY =
+        event.clientY -
+        parseFloat(getComputedStyle(document.querySelector("div.window")).top);
     });
 
-    // In focus and out of focus windows
-    document.addEventListener("mousedown", (event) => { 
-      let selectedId = getSelectedIdFromEvent(event);
-      focusTask(selectedId);
+  document.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+      // Calculate the new position of the window based on the mouse position
+      let newX = event.clientX - offsetX;
+      let newY = event.clientY - offsetY;
+
+      // Ensure the window stays within the screen boundaries
+      const maxX =
+        window.innerWidth -
+        parseFloat(
+          getComputedStyle(document.querySelector("div.window")).width
+        );
+      const maxY =
+        window.innerHeight -
+        parseFloat(
+          getComputedStyle(document.querySelector("div.window")).height
+        );
+
+      newX = Math.min(Math.max(0, newX), maxX);
+      newY = Math.min(Math.max(0, newY), maxY);
+
+      // Update the window's position
+      document.querySelector("div.window").style.left = newX + "px";
+      document.querySelector("div.window").style.top = newY + "px";
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  // In focus and out of focus windows
+  document.addEventListener("mousedown", (event) => {
+    let selectedId = getSelectedIdFromEvent(event);
+    focusTask(selectedId);
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  //close window
+  document
+    .querySelector("div.window .window-header-right img#close")
+    .addEventListener("click", (event) => {
+      closeWindowHelper(event);
     });
-
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
-
-    //close window
-    document
-      .querySelector("div.window .window-header-right img#close")
-      .addEventListener("click", (event) => {
-        closeWindowHelper(event);
-      });
-
-    document
-      .querySelector("div.window .window-header-right img#max")
-      .addEventListener("click", (event) => {
-        const id = getSelectedIdFromEvent(event);
-        const currentWindow = document.querySelector(`div.window#${id}`);
-        if(currentWindow.classList.contains("fulldisplay")){
-          currentWindow.classList.toggle("fulldisplay");
-          document.querySelector(`div.window#${id} img#max`).setAttribute("src", "essentials/images/Maximize.png");
-        }
-        else{
-          currentWindow.classList.toggle("fulldisplay");
-          document.querySelector(`div.window#${id} img#max`).setAttribute("src", "essentials/images/Restore.png");  
-        }
-      });
-      
-      document
-      .querySelector("div.window .window-header-right img#min")
-      .addEventListener("click", (event) => {
-        const id = getSelectedIdFromEvent(event);
-        document.querySelector(`div.window#${id}`).classList.add("hidden-window");
-      });
-  }
-
-
-  function newNotepad() {
-    const windowId = `window-${windowCount++}`;
-    const title = "Resume - Notepad";
-
-    var newElement = document.createElement("div");
-    newElement.className = "window";
-    // newElement.classList.add("fulldisplay");
-    newElement.classList.add("inFocus");
-    newElement.id = windowId; // Assign a unique ID to the window
-    newElement.innerHTML = resumeNotepad();
-    newElement.style.display = "none";
-    newTask(title, windowId);
-    defWait();
-    body.insertBefore(newElement, body.firstChild);
-    focusTask(`window-${windowCount - 1}`);
-    setTimeout(() => {
-      document.querySelector(`#${windowId}`).style.display = "flex";
-      body.classList.remove("wait");
-    }, 1000);
-
-    document.querySelector("div.window").addEventListener("click", (event) => {
-      console.log("clicked window");
-    });
-
-    // Making window draggable and also to not move it out of screen
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    document
-      .querySelector("div.window .window-header")
-      .addEventListener("mousedown", (event) => {
-        isDragging = true;
-
-        // Calculate the offset from the mouse click to the window's top-left corner
-        offsetX =
-          event.clientX -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).left
-          );
-        offsetY =
-          event.clientY -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).top
-          );
-      });
-
-    document.addEventListener("mousemove", (event) => {
-      if (isDragging) {
-        // Calculate the new position of the window based on the mouse position
-        let newX = event.clientX - offsetX;
-        let newY = event.clientY - offsetY;
-
-        // Ensure the window stays within the screen boundaries
-        const maxX =
-          window.innerWidth -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).width
-          );
-        const maxY =
-          window.innerHeight -
-          parseFloat(
-            getComputedStyle(document.querySelector("div.window")).height
-          );
-
-        newX = Math.min(Math.max(0, newX), maxX);
-        newY = Math.min(Math.max(0, newY), maxY);
-
-        // Update the window's position
-        document.querySelector("div.window").style.left = newX + "px";
-        document.querySelector("div.window").style.top = newY + "px";
-      }
-    });
-
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
-
-    // In focus and out of focus windows
-    document.addEventListener("mousedown", (event) => { 
-      let selectedId = getSelectedIdFromEvent(event);
-      focusTask(selectedId);
-    });
-
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
-
-    //close window
-    document
-      .querySelector("div.window .window-header-right img#close")
-      .addEventListener("click", (event) => {
-        closeWindowHelper(event);
-      });
-  }
+}
 
 function closeWindowHelper(event) {
   let targetId = getSelectedIdFromEvent(event);
   const windowToClose = document.getElementById(targetId);
-  const taskToClose = document.querySelector(`div#start-menu div.taskbar-apps div#${targetId}`);
+  const taskToClose = document.querySelector(
+    `div#start-menu div.taskbar-apps div#${targetId}`
+  );
   if (windowToClose) {
     setTimeout(() => {
       body.removeChild(windowToClose);
@@ -366,112 +478,112 @@ function getSelectedIdFromEvent(event) {
   return targetId;
 }
 
-  function newTask(title, windowId) {
-    var newTask = document.createElement("div");
-    newTask.className = "task";
-    newTask.classList.add("focused-task");
-    newTask.id = windowId;
-    newTask.innerHTML = `<img id="task-icon" src="essentials/images/notepad-small.png">
-            <div id="task-name">${title}</div>`;
-    taskbarTasks.appendChild(newTask);
+function newTask(title, windowId, icon) {
+  var newTask = document.createElement("div");
+  newTask.className = "task";
+  newTask.classList.add("focused-task");
+  newTask.id = windowId;
+  newTask.innerHTML = `<img id="task-icon" src="essentials/images/${icon}">
+                         <div id="task-name">${title}</div>`;
+  taskbarTasks.appendChild(newTask);
 
-    // Add event listener to the taskbar app for closing the corresponding window
-    // newTask.addEventListener("click", taskClickHandler);
-  }
+  // Add event listener to the taskbar app for closing the corresponding window
+  // newTask.addEventListener("click", taskClickHandler);
+}
 
-  // function taskClickHandler(event) {
-  //   toggleMinimize(getSelectedIdFromEvent(event));
-  // }
+// function taskClickHandler(event) {
+//   toggleMinimize(getSelectedIdFromEvent(event));
+// }
 
-  function focusTask(id) {
-    // whenever this method is called
-    // it will focus on the given "id" by adding "inFocus" to window
-    // and "focused-task" to task
-    // && "outOfFocus" to all the windows
-    // and "normal-task" to all other tasks
-    console.log(id);
-    
-    const currentWindow = document.querySelector(`div.window#${id}`);
-    const currentTask = document.querySelector(`div.taskbar-apps div.task#${id}`);
+function focusTask(id) {
+  // whenever this method is called
+  // it will focus on the given "id" by adding "inFocus" to window
+  // and "focused-task" to task
+  // && "outOfFocus" to all the windows
+  // and "normal-task" to all other tasks
+  console.log(id);
 
-    if(currentWindow.classList.contains("hidden-window"))
-      currentWindow.classList.remove("hidden-window");
-    
-    console.log(currentWindow);
-    console.log(currentTask);
+  const currentWindow = document.querySelector(`div.window#${id}`);
+  const currentTask = document.querySelector(`div.taskbar-apps div.task#${id}`);
 
-    document.querySelectorAll(".window").forEach((window) => {
-      window.classList.remove("inFocus");
-    });
-
-    document.querySelectorAll(".task").forEach((task) => {
-      task.classList.remove("focused-task");
-    });
-    
-    // Add the "inFocus" class to the clicked window
-    currentWindow.classList.add("inFocus");
-    currentTask.classList.add("focused-task");
-
-    // Add the "outOfFocus" class to all other open windows
-    document.querySelectorAll(".window:not(.inFocus)").forEach((window) => {
-      window.classList.add("outOfFocus");
-    });
-
-    document.querySelectorAll(".task:not(.focused-task)").forEach((task) => {
-      task.classList.add("normal-task");
-    });
-  }
-
-  function toggleMinimize(id) {
-    const currentWindow = document.querySelector(`div.window#${id}`);
-    currentWindow.removeEventListener("click", taskClickHandler);
-    // const currentTask = document.querySelector(`div.taskbar-apps div.task#${id}`);
-    if(currentWindow.classList.contains("hidden-window"))
+  if (currentWindow.classList.contains("hidden-window"))
     currentWindow.classList.remove("hidden-window");
-  else
-    currentWindow.classList.add("hidden-window");
+
+  console.log(currentWindow);
+  console.log(currentTask);
+
+  document.querySelectorAll(".window").forEach((window) => {
+    window.classList.remove("inFocus");
+  });
+
+  document.querySelectorAll(".task").forEach((task) => {
+    task.classList.remove("focused-task");
+  });
+
+  // Add the "inFocus" class to the clicked window
+  currentWindow.classList.add("inFocus");
+  currentTask.classList.add("focused-task");
+
+  // Add the "outOfFocus" class to all other open windows
+  document.querySelectorAll(".window:not(.inFocus)").forEach((window) => {
+    window.classList.add("outOfFocus");
+  });
+
+  document.querySelectorAll(".task:not(.focused-task)").forEach((task) => {
+    task.classList.add("normal-task");
+  });
+}
+
+function toggleMinimize(id) {
+  const currentWindow = document.querySelector(`div.window#${id}`);
+  currentWindow.removeEventListener("click", taskClickHandler);
+  // const currentTask = document.querySelector(`div.taskbar-apps div.task#${id}`);
+  if (currentWindow.classList.contains("hidden-window"))
+    currentWindow.classList.remove("hidden-window");
+  else currentWindow.classList.add("hidden-window");
   // console.log("toggling minimize");
   currentWindow.addEventListener("click", taskClickHandler);
 }
 
-  // //task load cursor animation
-  function defWait() {
-    setTimeout(() => {
-      body.classList.add("wait");
-    }, 100);
-    setTimeout(() => {
-      body.classList.remove("wait");
-    }, 500);
-    setTimeout(() => {
-      body.classList.add("wait");
-    }, 600);
-  }
+// //task load cursor animation
+function defWait() {
+  setTimeout(() => {
+    body.classList.add("wait");
+  }, 100);
+  setTimeout(() => {
+    body.classList.remove("wait");
+  }, 500);
+  setTimeout(() => {
+    body.classList.add("wait");
+  }, 600);
+}
 
-  //taskbar time
-  setInterval(() => {
-    const now = new Date();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    document.querySelector("#start-menu #time").textContent =
-      (hours ? hours : 12) +
-      ":" +
-      (minutes < 10 ? "0" + minutes : minutes) +
-      " " +
-      ampm;
-  }, 1000);
+//taskbar time
+setInterval(() => {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  document.querySelector("#start-menu #time").textContent =
+    (hours ? hours : 12) +
+    ":" +
+    (minutes < 10 ? "0" + minutes : minutes) +
+    " " +
+    ampm;
+}, 1000);
 // });
 
 //add out of focus (done)
 //fix taskbar apps (done)
 //link taskbar app with window using id (done)
-//make folders as different sections 
-//also add my computer where we can add about me
-//and rest folder/file will lead to different sections
 
 // fix maximize (done)
 // document.querySelector(".window").classList.toggle("fulldisplay")
 
 // add minimize (done)
 // on id="min" and also on task
+
+//make folders as different sections
+//also add my computer where we can add about me
+//and rest folder/file will lead to different sections

@@ -3,14 +3,17 @@ document.addEventListener("DOMContentLoaded", function () {
     document
         .querySelector("div.folder#resume")
         .addEventListener("click", (event) => {
-        newWindow(resumeNotepad);
+        newWindow(resumeNotepad, "Resume.txt", "notepad-small.png");
         console.log("clicked");
         });
-
-    document
-        .querySelector("div.folder#computer")
-        .addEventListener("click", (event) => {
-        newWindow(explorer);
-        console.log("clicked");
+    const folders = document.querySelectorAll("div.folderWithFiles");
+    folders.forEach(folder => {
+        folder.addEventListener("click", (event) => {
+            console.log(event);
+            console.log(event.target.children[0].innerText);
+            console.log(event.target.children[1].innerText);
+            newWindow(explorer, event.target.children[1].innerText, "Folder Closed.ico");
+            console.log("clicked");
         });
+    });
 });

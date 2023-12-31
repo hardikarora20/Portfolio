@@ -106,14 +106,16 @@ ul{
 
 a{
     cursor: url(../essentials/cursors/cursor_pointer.cur), pointer !important;
+    text-decoration: none;
 }
 
 .task{
     font-size: 2.5vh;
     display: flex;
     margin: 3px 0px;
-    padding: 0px 2px;
-    width: 120px;
+    padding: 0px 0.5vw;
+    min-width: 120px;
+    max-width: max-content;
     border-radius: 4px;
     align-items: center;
     background-color: rgb(60, 129, 243) !important;
@@ -134,6 +136,12 @@ a{
     box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
     -moz-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important;
     -webkit-box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset !important; */
+}
+
+img#task-icon{
+    margin-inline: 5px;
+    height: 2vh;
+    /* width: 20px; */
 }
 
 .taskbar-right{
@@ -159,7 +167,7 @@ a{
     width: 50vw;
     overflow: hidden;
     height: 60vh;
-    background-color: #ffffff;
+    background-color: #fdfefa;
     z-index: 200;
     border: 2px solid #002ad9;
     border-radius: 10px 10px 0px 0px;
@@ -183,9 +191,9 @@ a{
 }
 
 .window-header-left img{
-    height: 6vh;
-    width: 6vh;
-    margin: 0px -5px;
+    height: 3vh;
+    /* width: 6vh; */
+    margin: 0px 0.5vh;
 }
 
 .window-header-right img{
@@ -206,6 +214,10 @@ a{
     cursor: url(../essentials/cursors/cursor_disabled.cur), not-allowed !important;
 }
 
+.clickDisabled{
+    cursor: url(../essentials/cursors/cursor_disabled.cur), not-allowed !important;
+}
+
 #window-title{
     font-size: 2.5vh;
     font-weight: 500;
@@ -217,20 +229,87 @@ a{
     background-color: #efebde;
     color: black;
     overflow: hidden;
-    padding: 0.2vh 0.5vh;
+    padding: 1vh 0.5vh;
+    box-sizing: border-box;
+    border-bottom: 1px solid #cac6af;
+}
+
+ul.window-toolbar{
+    display: flex;
+    align-items: center;
+    justify-content: normal;
+    background-color: #efebde;
+    padding-left: 1vh;
 }
 
 .window-toolbar li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* disabled */
-    opacity: 0.5;
-    left: 0;
+    /* opacity: 0.5; */
     height: 100%;
     font-size: 2.5vh;
+    text-align: center;
 }
 
-/* .window-toolbar li:hover{
-    background-color: #8e8c85;
-} */
+.second-toolbar{
+    height: 8vh;
+    width: 100%;
+    padding: 5px 0px;
+    display: flex;
+    background-color: #efeede;
+    overflow: hidden;
+    border-bottom: 1px solid #cac6af;
+}
+
+.second-toolbar-1, .second-toolbar-2{
+    border-right: 1px solid #cac6af;
+    height: 100%;
+    /* background-color: red; */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.second-toolbar-tool{
+    padding: 5px 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.second-toolbar-tool img{
+    height: 50%;
+}
+
+.second-toolbar-tool .title{
+    color: black;
+    font-size: 2.5vh;
+    padding: 2px;
+    text-align: center;
+}
+
+.folder-tab{
+    color: black;
+    height: 100%;
+    width: 100%; 
+} 
+
+.folder-tab .sections .title{
+    padding: 1% 0% 0% 1%;
+    font-weight: bold;
+    border: 10px solid linear-gradient(90deg, rgba(93,166,255,1) 0%, rgba(93,166,255,1) 55%, rgba(255,255,255,0) 100%);
+}
+
+.folder-tab .title-underline{
+    width: 50%;
+    height: 2px;
+    background: rgb(93,166,255);
+    background: linear-gradient(90deg, rgba(93,166,255,1) 0%, rgba(93,166,255,1) 55%, rgba(255,255,255,0) 100%);
+}
 
 .window textarea{
     /* font-family: 'Tahoma'; */
@@ -308,10 +387,12 @@ a{
 }
 
 .folder{
+    width: 60px;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0px 5px;
     justify-content: center;
     /* padding: 1rem 0rem; */
 }
@@ -326,17 +407,99 @@ a{
     width: 7vh;
 }
 
+.folder-icon::before {
+    content: url("essentials/images/Exit.png"); 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#shortcut{
+    position: absolute;
+    left: 8px;
+    width: 4vh;
+}
+
 .folder:hover{
-    background-color: #0c8eea85;
+    background-color: #afdeff98;
 }
 
 .folder .folder-title{
     pointer-events: none;
     font-size: 3vh;
     text-align: center;
-    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
-    text-stroke: 0.1px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    /* -webkit-text-stroke: 0.2px rgb(0, 0, 0); */
+    text-stroke: 0.2px rgb(0, 0, 0); 
     text-shadow: 1px 1px 0px #000000;
+}
+
+.in-folder{
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    /* background-color: yellowgreen; */
+}
+
+.in-folder{    
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.in-folder .folder-title{
+    color: #515252;
+    font-size: 2.5vh;
+    text-stroke: 0px rgb(0, 0, 0); 
+    text-shadow: 0px 0px 0px #000000;
+}
+
+.in-folder .folder{
+    position: relative;
+}
+
+.files-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.files-container .left-bar{
+    width: 30vh;
+    height: 100%;
+    background-color: #667cd8;
+    display: flex;
+    flex-direction: column;
+    padding:5px 0px;
+}
+
+.left-bar .tab{
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 5px;
+    padding: 5px;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 50%, rgba(199,211,247,1) 100%);
+}
+
+.tab img{
+    height: 20px;
+}
+
+.tab-title{
+    font-weight: 600;
+    color: #215dc6;
 }
 
 .heading{
