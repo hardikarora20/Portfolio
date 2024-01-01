@@ -85,6 +85,7 @@ function createNewExplorer(title, image) {
         </div>
         <div class = "in-folder">
           ${filesToDiv(title)}
+          </div>
         </div>
       </div>
       </div>`;
@@ -211,34 +212,67 @@ function filesToDiv(title){
   var list = "";
   switch (title) {
     case "Projects":
-      fileList = ["Portfolio:web:www.github.com/hardikarora20/Portfolio",
-                  "SimonGame:web:www.github.com/hardikarora20/Simon",
-                  "CodeKeeper:java:www.github.com/hardikarora20/CodeKeeper", 
-                  "CarePlus:java:www.github.com/hardikarora20/CarePlus", 
-                  "Medley:web:www.github.com/hardikarora20/Medley"];
+      fileList = ["split:Live Projects",
+      "Portfolio:web:hardikarora20.github.io/Portfolio",
+      "SimonGame:web:hardikarora20.github.io/Simon",
+      "Medley:web:hardikarora20.github.io/Medley",
+      "split:GitHub Repositories",
+      "Portfolio:html:github.com/hardikarora20/Portfolio",
+      "SimonGame:html:github.com/hardikarora20/Simon",
+      "CodeKeeper:java:github.com/hardikarora20/CodeKeeper", 
+      "CarePlus:java:github.com/hardikarora20/CarePlus", 
+      "Medley:html:github.com/hardikarora20/Medley"];
       break;
-    case "Profiles":
-      fileList = ["GitHub:github:www.github.com/hardikarora20",
-                  "Leetcode:leetcode:www.leetcode.com/hardikarora",
-                  "LinkedIn:linkedin:www.linkedin.com/in/hardikarora20"];
+      case "Profiles":
+      fileList = ["split:Social Profiles",
+                  "GitHub:github:github.com/hardikarora20",
+                  "LinkedIn:linkedin:linkedin.com/in/hardikarora20",
+                  "split:Coding Platforms",
+                  "Leetcode:leetcode:leetcode.com/hardikarora",
+                  "CodingNinjas:leetcode:codingninjas.com/studio/profile/891b124a-8e82-48ae-9e30-2d3c5851a0b8",
+                  "GFG:leetcode:auth.geeksforgeeks.org/user/hardik20a",
+  ];
       break;
     case "Contact":
-      fileList = ["Email:github:www.github.com/hardikarora20",
-                  "Resume:linkedin:www.linkedin.com/in/hardikarora20"];
+      fileList = ["Email:github:github.com/hardikarora20",
+                  "Resume:linkedin:linkedin.com/in/hardikarora20"];
       break;
   }
   console.log(fileList);
+  var i = 0;
   fileList.forEach(file => {
     var titleLang = file.split(":");
     // console.log(titleLang[2]);
-    list += `
-    <a href = "https://${titleLang[2]}" target = "_blank">
-      <div class="folder pointer" id = "${titleLang[0]}">
-        <img src="essentials/images/${titleLang[1]}.png" class="folder-icon">
-        <div class="folder-title">${titleLang[0]}</div>
-        <img src="essentials/images/shortcut.png" id="shortcut">
-      </div>
-    </a>`;
+    if(titleLang[0] == "split"){
+      if(i == 0){
+        list += `             
+                <div class="folder-sections">
+                    <div class="section-head">
+                        <button class="section-title border-gradient-purple border-gradient">${titleLang[1]}</button>
+                    </div>
+                    <div class="folders-in-section">`;
+      }
+      else{
+        list += `  
+                </div>           
+                <div class="folder-sections">
+                    <div class="section-head">
+                        <button class="section-title border-gradient-purple border-gradient">${titleLang[1]}</button>
+                    </div>
+                    <div class="folders-in-section">`;
+      }
+    }
+    else{
+      list += `
+      <a href = "https://${titleLang[2]}" target = "_blank">
+        <div class="folder pointer" id = "${titleLang[0]}">
+          <img src="essentials/images/${titleLang[1]}.png" class="folder-icon">
+          <div class="folder-title">${titleLang[0]}</div>
+          <img src="essentials/images/shortcut.png" id="shortcut">
+        </div>
+      </a>`;
+      i++;
+    }
   });
   return list;
 }
