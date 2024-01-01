@@ -217,11 +217,11 @@ function filesToDiv(title){
       "SimonGame:web:hardikarora20.github.io/Simon",
       "Medley:web:hardikarora20.github.io/Medley",
       "split:GitHub Repositories",
-      "Portfolio:html:github.com/hardikarora20/Portfolio",
-      "SimonGame:html:github.com/hardikarora20/Simon",
+      "Portfolio:HTML:github.com/hardikarora20/Portfolio",
+      "SimonGame:HTML:github.com/hardikarora20/Simon",
       "CodeKeeper:java:github.com/hardikarora20/CodeKeeper", 
       "CarePlus:java:github.com/hardikarora20/CarePlus", 
-      "Medley:html:github.com/hardikarora20/Medley"];
+      "Medley:HTML:github.com/hardikarora20/Medley"];
       break;
       case "Profiles":
       fileList = ["split:Social Profiles",
