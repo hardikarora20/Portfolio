@@ -35,7 +35,7 @@ function createNewExplorer(title, image) {
       <div class="second-toolbar clickDisabled">
         <div class="second-toolbar-1">
           <div class="second-toolbar-tool">
-            <img class="icon" src="essentials/images/back.png">
+            <img class="icon" src="essentials/images/Back.png">
             <div class="title">
               Back
             </div>
@@ -183,8 +183,8 @@ function createNewNotepad(title, defText, image) {
         </div>
     </div>
     <div class="window-header-right">
-        <img src="essentials/images/Minimize.png" alt="" id="min" class="pointer glowOnHover">
-        <img src="essentials/images/Maximize.png" alt="" id="max" class="pointer glowOnHover">
+        <img src="essentials/images/minimize.png" alt="" id="min" class="pointer glowOnHover">
+        <img src="essentials/images/maximize.png" alt="" id="max" class="pointer glowOnHover">
         <img src="essentials/images/Exit.png" class="pointer glowOnHover" alt="" id="close">
     </div>
     </div>
