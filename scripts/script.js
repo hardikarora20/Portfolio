@@ -19,8 +19,8 @@ function createNewExplorer(title, image) {
       </div>
     </div>
     <div class="window-header-right">
-      <img src="essentials/images/Minimize.png" alt="" id="min" class="pointer glowOnHover">
-      <img src="essentials/images/Maximize.png" alt="" id="max" class="pointer glowOnHover">
+      <img src="essentials/images/minimize.png" alt="" id="min" class="pointer glowOnHover">
+      <img src="essentials/images/maximize.png" alt="" id="max" class="pointer glowOnHover">
       <img src="essentials/images/Exit.png" class="pointer glowOnHover" alt="" id="close">
     </div>
     </div>
@@ -344,7 +344,7 @@ function newWindow(type, title, icon) {
         currentWindow.classList.toggle("fulldisplay");
         document
           .querySelector(`div.window#${id} img#max`)
-          .setAttribute("src", "essentials/images/Maximize.png");
+          .setAttribute("src", "essentials/images/maximize.png");
       } else {
         currentWindow.classList.toggle("fulldisplay");
         document
