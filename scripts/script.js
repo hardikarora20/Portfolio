@@ -25,12 +25,12 @@ function createNewExplorer(title, image) {
     </div>
     </div>
     <ul class="window-toolbar clickDisabled">
-        <li>File</li>
-        <li>Edit</li>
-        <li>View</li>
-        <li>Favorites</li>
-        <li>Tools</li>
-        <li>Help</li>
+        <li><U>F</U>ile</li>
+        <li><U>E</U>dit</li>
+        <li><U>V</U>iew</li>
+        <li><U>F</U>avorites</li>
+        <li><U>T</U>ools</li>
+        <li><U>H</U>elp</li>
       </ul>
       <div class="second-toolbar clickDisabled">
         <div class="second-toolbar-1">
@@ -190,11 +190,11 @@ function createNewNotepad(title, defText, image) {
     </div>
     </div>
     <ul class="window-toolbar">
-        <li>File</li>
-        <li>Edit</li>
-        <li>Format</li>
-        <li>View</li>
-        <li>Help</li>
+        <li><U>F</U>ile</li>
+        <li><U>E</U>dit</li>
+        <li><U>F</U>ormat</li>
+        <li><U>V</U>iew</li>
+        <li><U>H</U>elp</li>
     </ul>
     <textarea id="notepad-text" class="default" disabled>
         ${defText}
@@ -229,7 +229,7 @@ function filesToDiv(title){
                   "LinkedIn:linkedin:linkedin.com/in/hardikarora20",
                   "split:Coding Platforms",
                   "Leetcode:leetcode:leetcode.com/hardikarora",
-                  "CodingNinjas:leetcode:codingninjas.com/studio/profile/891b124a-8e82-48ae-9e30-2d3c5851a0b8",
+                  "Coding Ninjas:leetcode:codingninjas.com/studio/profile/891b124a-8e82-48ae-9e30-2d3c5851a0b8",
                   "GFG:leetcode:auth.geeksforgeeks.org/user/hardik20a",
   ];
       break;
@@ -618,6 +618,9 @@ setInterval(() => {
 // add minimize (done)
 // on id="min" and also on task
 
-//make folders as different sections
-//also add my computer where we can add about me
-//and rest folder/file will lead to different sections
+// make folders as different sections
+// also add my computer where we can add about me
+// and rest folder/file will lead to different sections
+
+// add welcome screen (done)
+// add startmenu with the same shortcuts and shutdown page 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="openFullscreen()">hey</button>
+    <iframe src="welcome.html" title="W3Schools Free Online Web Tutorials"></iframe>
+    <script>
+        
+        var elem = document.getElementsByTagName("body")[0];
+
+        /* View in fullscreen */
+        function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+        window.location="welcome.html";
+        }
+    </script>
+</body>
+</html>

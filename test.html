@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="black">
+    <div class="xp-container">
+        <div class="welcome-header" id="top-header"></div>
+        <div class="login-pane-container">
+        <div class="left-login-pane login-pane">
+            <img src="essentials/images/logo.png" class="login-pane-logo">
+            <div class="left-pane-text">To begin, click your user name</div>
+        </div>
+        <div class="separator-line"></div>
+        <div class="right-login-pane login-pane">
+            <div class="login-user pointer" onclick="createElementandFullscreen()">
+                <img src="essentials/images/user.jpg" class="user-icon">
+                <div class="user-name">Hardik</div>
+            </div>
+        </div>
+        </div>
+        <div class="welcome-header" id="bottom-header"></div>
+    </div>
+    <!-- <iframe src="welcome.html"></iframe> -->
+    <script>
+        if(window.innerHeight == screen.height) {
+            console.log("hey");
+        }
+        
+        /* View in fullscreen */
+        function createElementandFullscreen() {
+            const container = document.getElementsByClassName("xp-container")[0];
+            container.innerHTML = "";
+            const frame = document.createElement("iframe");
+            frame.setAttribute("src", "welcome.html");
+            container.appendChild(frame);
+            fullScreenFrame();
+        }
+        function fullScreenFrame() {
+            const elem = document.getElementsByTagName("iframe")[0];
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>
