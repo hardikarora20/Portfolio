@@ -79,8 +79,11 @@ function createNewExplorer(title, image) {
             <img src="essentials/images/downarrow.png" id="down-arrow">
           </div>
           <div class="tab">
-            <div class="tab-title">Details</div>
-            <img src="essentials/images/downarrow.png" id="down-arrow">
+          <div class="tab-title">Details</div>
+          <img src="essentials/images/downarrow.png" id="down-arrow">
+          </div>
+          <div class="dog-container default">
+          <div class = "folder-dog"></div>
           </div>
         </div>
         <div class = "in-folder">
@@ -190,11 +193,14 @@ function createNewNotepad(title, defText, image) {
     </div>
     </div>
     <ul class="window-toolbar">
-        <li><U>F</U>ile</li>
-        <li><U>E</U>dit</li>
-        <li><U>F</U>ormat</li>
-        <li><U>V</U>iew</li>
-        <li><U>H</U>elp</li>
+        <li class="clickDisabled"><U>F</U>ile</li>
+        <li class="clickDisabled"><U>E</U>dit</li>
+        <li class="clickDisabled"><U>F</U>ormat</li>
+        <li class="clickDisabled"><U>V</U>iew</li>
+        <li class="clickDisabled"><U>H</U>elp</li>
+        <a class="resumeNewTab" href = "https://drive.google.com/file/d/1PhOziIQ_CmF-1YGpq9qNPxDUG0GB0WF-/view?usp=drive_link" target="_blank">
+        <li class = "pointer"><U>O</U>pen in new tab</li>
+        </a>
     </ul>
     <textarea id="notepad-text" class="default" disabled>
         ${defText}
@@ -228,7 +234,7 @@ function filesToDiv(title){
                   "GitHub:github:github.com/hardikarora20",
                   "LinkedIn:linkedin:linkedin.com/in/hardikarora20",
                   "split:Coding Platforms",
-                  "Leetcode:leetcode:leetcode.com/hardikarora",
+                  "LeetCode:leetcode:leetcode.com/hardikarora",
                   "Coding Ninjas:leetcode:codingninjas.com/studio/profile/891b124a-8e82-48ae-9e30-2d3c5851a0b8",
                   "GFG:leetcode:auth.geeksforgeeks.org/user/hardik20a",
   ];
@@ -303,64 +309,83 @@ function newWindow(type, title, icon) {
     console.log("clicked window");
   });
 
-  // Making window draggable and also to not move it out of screen
-  let isDragging = false;
-  let offsetX, offsetY;
+// Making window draggable and also to not move it out of screen
+let isDragging = false;
+let offsetX, offsetY;
 
-  document
-    .querySelector("div.window .window-header")
-    .addEventListener("mousedown", (event) => {
-      isDragging = true;
+const windowHeader = document.querySelector("div.window .window-header");
+const windowElement = document.querySelector("div.window");
 
-      // Calculate the offset from the mouse click to the window's top-left corner
-      offsetX =
-        event.clientX -
-        parseFloat(getComputedStyle(document.querySelector("div.window")).left);
-      offsetY =
-        event.clientY -
-        parseFloat(getComputedStyle(document.querySelector("div.window")).top);
-    });
+windowHeader.addEventListener("mousedown", startDragging);
+windowHeader.addEventListener("touchstart", startDragging);
 
-  document.addEventListener("mousemove", (event) => {
-    if (isDragging) {
-      // Calculate the new position of the window based on the mouse position
-      let newX = event.clientX - offsetX;
-      let newY = event.clientY - offsetY;
+function startDragging(event) {
+  event.preventDefault();
 
-      // Ensure the window stays within the screen boundaries
-      const maxX =
-        window.innerWidth -
-        parseFloat(
-          getComputedStyle(document.querySelector("div.window")).width
-        );
-      const maxY =
-        window.innerHeight -
-        parseFloat(
-          getComputedStyle(document.querySelector("div.window")).height
-        );
+  isDragging = true;
 
-      newX = Math.min(Math.max(0, newX), maxX);
-      newY = Math.min(Math.max(0, newY), maxY);
+  offsetX =
+    event.clientX -
+    parseFloat(getComputedStyle(windowElement).left);
+  offsetY =
+    event.clientY -
+    parseFloat(getComputedStyle(windowElement).top);
 
-      // Update the window's position
-      document.querySelector("div.window").style.left = newX + "px";
-      document.querySelector("div.window").style.top = newY + "px";
+  window.addEventListener("mousemove", dragWindow);
+  window.addEventListener("touchmove", dragWindow);
+  window.addEventListener("mouseup", stopDragging);
+  window.addEventListener("touchend", stopDragging);
+}
+
+function dragWindow(event) {
+  event.preventDefault();
+
+  if (isDragging) {
+    let clientX, clientY;
+
+    if (event.type === "mousemove") {
+      clientX = event.clientX;
+      clientY = event.clientY;
+    } else if (event.type === "touchmove" && event.touches.length === 1) {
+      const touch = event.touches[0];
+      clientX = touch.clientX;
+      clientY = touch.clientY;
     }
-  });
 
-  document.addEventListener("mouseup", () => {
-    isDragging = false;
-  });
+    let newX = clientX - offsetX;
+    let newY = clientY - offsetY;
 
-  // In focus and out of focus windows
-  document.addEventListener("mousedown", (event) => {
-    let selectedId = getSelectedIdFromEvent(event);
-    focusTask(selectedId);
-  });
+    const maxX =
+      window.innerWidth - parseFloat(getComputedStyle(windowElement).width);
+    const maxY =
+      window.innerHeight - parseFloat(getComputedStyle(windowElement).height);
 
-  document.addEventListener("mouseup", () => {
-    isDragging = false;
-  });
+    newX = Math.min(Math.max(0, newX), maxX);
+    newY = Math.min(Math.max(0, newY), maxY);
+
+    windowElement.style.left = newX + "px";
+    windowElement.style.top = newY + "px";
+  }
+}
+
+function stopDragging() {
+  isDragging = false;
+
+  window.removeEventListener("mousemove", dragWindow);
+  window.removeEventListener("touchmove", dragWindow);
+  window.removeEventListener("mouseup", stopDragging);
+  window.removeEventListener("touchend", stopDragging);
+}
+
+// In focus and out of focus windows
+document.addEventListener("mousedown", (event) => {
+  let selectedId = getSelectedIdFromEvent(event);
+  focusTask(selectedId);
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
 
   //close window
   document

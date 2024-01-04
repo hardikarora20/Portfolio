@@ -43,21 +43,32 @@
                 <img src="essentials/images/Internet Explorer 6.png" class="start-menu-item-icon">
                 <div class="start-menu-item-title">Portfolio</div>
               </div>
-              </a>
+            </a>
+            <div class="all-programs-container">
+              <div class="start-menu-left-item start-menu-left-item-programs clickDisabled">
+                <div class="start-menu-item-title">All Programs</div>
+                <img src="essentials/images/all.png" class="start-menu-item-icon">
+              </div>
+            </div>
             </div>
             <div class="start-menu-container-right">
-              <div class="start-menu-right-item">
-                <img src="essentials/images/Internet Explorer 6.png" class="start-menu-item-icon">
-                <div class="start-menu-item-title">Portfolio</div>
+              <a href="http://leetcode.com/hardikarora">
+              <div class="start-menu-right-item pointer">
+                <img src="essentials/images/leetcode.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">LeetCode</div>
               </div>
-              <div class="start-menu-right-item">
-                <img src="essentials/images/Internet Explorer 6.png" class="start-menu-item-icon">
-                <div class="start-menu-item-title">Portfolio</div>
+              </a>
+              <div class="start-menu-right-item pointer" onclick="newWindow(resumeNotepad, 'Resume.txt', 'notepad-small.png')">
+                <img src="essentials/images/Notepad.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">Resume</div>
               </div>
-              <div class="start-menu-right-item">
-                <img src="essentials/images/Internet Explorer 6.png" class="start-menu-item-icon">
-                <div class="start-menu-item-title">Portfolio</div>
+              </a>
+              <a href="http://hardikarora20.github.io/Medley">
+              <div class="start-menu-right-item pointer">
+                <img src="essentials/images/HTML.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">Medley</div>
               </div>
+              </a>
             </div>
           </div>
           <div class="start-menu-footer">
@@ -66,15 +77,15 @@
                 <img src="essentials/images/Logout.png" class="footer-button-image">
                 <div class="footer-button-title">Log Off</div>
               </div>
-              <div class="footer-button pointer">
+              <div class="footer-button pointer" onclick="window.location.href='shutdown.html';">
                 <img src="essentials/images/Power.png" class="footer-button-image">
                 <div class="footer-button-title">Shut Down</div>
               </div>
             </div>
           </div>
         </div>
-        <div id="start-menu" onclick="toggleStart()">
-            <img src="essentials/images/startbutton.png" class="pointer">
+        <div id="start-menu">
+            <img src="essentials/images/startbutton.png" class="pointer" onclick="toggleStart()">
             <div class="taskbar-apps">
             </div>
             <div class="taskbar-right">
