@@ -303,6 +303,8 @@ function newWindow(type, title, icon) {
     document.querySelector(`#${windowId}`).style.opacity = 1;
     body.classList.remove("wait");
     console.log(document.querySelector(`#${windowId}`).classList);
+    const audioElement = new Audio("essentials/sounds/explore.mp3");
+    audioElement.play();
   }, 1000);
 
   document.querySelector("div.window").addEventListener("click", (event) => {

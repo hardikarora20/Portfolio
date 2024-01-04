@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="styles/style.css">
+        <title>Hardik Arora | Portfolio</title>
+        <link rel="icon" href="images/icon.png">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-navbutton-color" content="#ffffff">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
+    </head>
+    <body class="noselect default">
+        <div id="fixed-background"></div>
+        <div class="start-menu-full displayNone">
+          <div class="start-menu-header">
+            <div class="login-user start-user">
+              <img src="essentials/images/user.jpg" class="user-icon">
+              <div class="user-name">Hardik</div>
+          </div>
+          </div>
+          <div class="start-menu-container">
+            <div class="start-menu-container-left">
+              <a href = "https://www.github.com/hardikarora20">
+              <div class="start-menu-left-item">
+                <img src="essentials/images/github.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">GitHub</div>
+              </div>
+              </a>
+              <a href="mailto:hardik@gmail.com">
+              <div class="start-menu-left-item">
+                <img src="essentials/images/Email.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">E-mail</div>
+              </div>
+              </a>
+              <a href = "https://www.linkedin.com/in/hardikarora20">
+              <div class="start-menu-left-item">
+                <img src="essentials/images/linkedin.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">LinkedIn</div>
+              </div>
+              </a>
+              <a href = "https://www.github.com/hardikarora20/Portfolio">
+              <div class="start-menu-left-item">
+                <img src="essentials/images/Internet Explorer 6.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">Portfolio</div>
+              </div>
+            </a>
+            <div class="all-programs-container">
+              <div class="start-menu-left-item start-menu-left-item-programs clickDisabled">
+                <div class="start-menu-item-title">All Programs</div>
+                <img src="essentials/images/all.png" class="start-menu-item-icon">
+              </div>
+            </div>
+            </div>
+            <div class="start-menu-container-right">
+              <a href="http://leetcode.com/hardikarora">
+              <div class="start-menu-right-item pointer">
+                <img src="essentials/images/leetcode.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">LeetCode</div>
+              </div>
+              </a>
+              <div class="start-menu-right-item pointer" onclick="newWindow(resumeNotepad, 'Resume.txt', 'notepad-small.png')">
+                <img src="essentials/images/Notepad.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">Resume</div>
+              </div>
+              </a>
+              <a href="http://hardikarora20.github.io/Medley">
+              <div class="start-menu-right-item pointer">
+                <img src="essentials/images/HTML.png" class="start-menu-item-icon">
+                <div class="start-menu-item-title">Medley</div>
+              </div>
+              </a>
+            </div>
+          </div>
+          <div class="start-menu-footer">
+            <div class="footer-button-container">
+              <div class="footer-button pointer" onclick="logOff()">
+                <img src="essentials/images/Logout.png" class="footer-button-image">
+                <div class="footer-button-title">Log Off</div>
+              </div>
+              <div class="footer-button pointer" onclick="window.location.href='shutdown.html';">
+                <img src="essentials/images/Power.png" class="footer-button-image">
+                <div class="footer-button-title">Shut Down</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="start-menu">
+            <img src="essentials/images/startbutton.png" class="pointer" onclick="toggleStart()">
+            <div class="taskbar-apps">
+            </div>
+            <div class="taskbar-right">
+              <div id="time">9:11 AM</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="page" id="home">
+              <div class="folder-container">
+                <!-- <div class="folder pointer" id="computer">
+                  <img src="essentials/images/My Computer.ico" class="folder-icon">
+                  <div class="folder-title">My Computer</div>
+                </div> -->
+                <div class="folder pointer folderWithFiles" id="profiles">
+                  <img src="essentials/images/Folder Closed.ico" class="folder-icon">
+                  <div class="folder-title">Profiles</div>
+                </div>
+                <div class="folder pointer folderWithFiles" id="projects">
+                  <img src="essentials/images/Folder Closed.ico" class="folder-icon">
+                  <div class="folder-title">Projects</div>
+                </div>
+                <a href="mailto:hardik@gmail.com">
+                  <div class="folder pointer" id="email">
+                    <img src="essentials/images/Email.png" class="folder-icon">
+                    <div class="folder-title">Email</div>
+                    <!-- <img src="essentials/images/shortcut.png" id="shortcut"> -->
+                  </div>
+                </a>
+                <div class="folder pointer" id="resume">
+                  <img src="essentials/images/Notepad.png" class="folder-icon">
+                  <div class="folder-title">Resume</div>
+                  <!-- <img src="essentials/images/shortcut.png" id="shortcut"> -->
+                </div>
+              </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="scripts/script.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <script>
+            function logOff() {
+              const audioElement = new Audio('essentials/sounds/logoff.mp3');
+              audioElement.play();
+              setTimeout(() => {
+                window.location.href = "login.html"; 
+              }, 500);
+            }
+        </script>
+        <!-- <script src="data.js"></script> -->
+    </body>
+</html></div></body></html>

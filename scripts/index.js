@@ -4,26 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
         .querySelector("div.folder#resume")
         .addEventListener("click", (event) => {
         newWindow(resumeNotepad, "Resume.txt", "notepad-small.png");
-        console.log("clicked");
+        // console.log("clicked");
         });
     const folders = document.querySelectorAll("div.folderWithFiles");
     folders.forEach(folder => {
         folder.addEventListener("click", (event) => {
-            console.log(event);
-            console.log(event.target.children[0].innerText);
-            console.log(event.target.children[1].innerText);
+            // console.log(event);
+            // console.log(event.target.children[0].innerText);
+            // console.log(event.target.children[1].innerText);
             newWindow(explorer, event.target.children[1].innerText, "Folder Closed.ico");
-            console.log("clicked");
+            // console.log("clicked");
         });
     });
     document.addEventListener('keydown', function (event) {
         var startMenuFull = document.getElementsByClassName("start-menu-full")[0];
-        var container = document.getElementsByClassName("container")[0];
-      
-        // Check if the pressed key is 'S' or 's'
         if (event.key.toLowerCase() === 's') {
           startMenuFull.classList.toggle('displayNone');
-        //   container.classList.toggle('dimBack');
         }
       });      
 });
@@ -31,16 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleStart() {
     document.getElementsByClassName("start-menu-full")[0].classList.toggle("displayNone");
 }
-
-// document.addEventListener('click', function (event) {
-//     var startMenuFull = document.getElementsByClassName("start-menu-full")[0];
-//     var startMenu = document.getElementById("start-menu");
-//     // Check if the clicked element is not the startMenuFull,
-//     // startMenu, and startMenuFull has the class 'displayNone'
-//     if (event.target !== startMenuFull && event.target.id !== "start-menu" && !startMenuFull.classList.contains('displayNone')) {
-//         startMenuFull.classList.toggle('displayNone');
-//     }
-// });
 
 document.addEventListener('click', function (event) {
     var startMenuFull = document.getElementsByClassName("start-menu-full")[0];
