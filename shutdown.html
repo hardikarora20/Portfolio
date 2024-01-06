@@ -1,43 +1,51 @@
 <html>
-    <head>
-        <script src="script.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <link rel="stylesheet" href="styles/style.css">
-        <title>Hardik Arora | Portfolio</title>
-        <link rel="icon" href="images/icon.png">
-        <meta name="theme-color" content="#ffffff">
-        <meta name="msapplication-navbutton-color" content="#ffffff">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
-    </head>
-    <body bgcolor="black" class="noselect default">
-        <div class="xp-container">
-            <div class="welcome-header" id="top-header"></div>
-            <div class="login-pane-container shutdown-container">
-            <div class="left-login-pane login-pane shutdown-pane">
-                <img src="essentials/images/logo.png" class="login-pane-logo">
-                <div class="left-pane-text">Logging off...</div>
-            </div>
-            </div>
-            <div class="welcome-header" id="bottom-header"></div>
+  <head>
+    <script src="script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Hardik Arora | Portfolio</title>
+    <link rel="icon" href="images/icon.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-navbutton-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />
+  </head>
+  <body bgcolor="black" class="noselect default">
+    <div class="xp-container">
+      <div class="welcome-header" id="top-header"></div>
+      <div class="login-pane-container shutdown-container">
+        <div class="left-login-pane login-pane shutdown-pane">
+          <img src="essentials/images/logo.png" class="login-pane-logo" />
+          <div class="left-pane-text">Logging off...</div>
         </div>
-        <audio controls src="essentials/sounds/shutdown.mp3"></audio>
-        <script>
-            function welcomeSound() {
-                const audioElement = document.getElementsByTagName("audio")[0];
-                audioElement.click();
-                audioElement.play();
-            }
-            // window.location.href="index.html";
-            setTimeout(() => {
-                welcomeSound();
-                document.getElementsByClassName("left-pane-text")[0].innerText = "Saving your settings...";
-            }, 1000);
-            setTimeout(() => {
-                document.getElementsByClassName("left-pane-text")[0].innerText = "Windows is shutting down...";
-            }, 1400);
-            setTimeout(() => {
-                window.location.href="blank.html";
-            }, 5000);
-        </script>
-    </body>
+      </div>
+      <div class="welcome-header" id="bottom-header"></div>
+    </div>
+    <audio controls src="essentials/sounds/shutdown.mp3"></audio>
+    <script>
+      function welcomeSound() {
+        const audioElement = document.getElementsByTagName("audio")[0];
+        audioElement.click();
+        audioElement.play();
+      }
+      // window.location.href="index.html";
+      setTimeout(() => {
+        welcomeSound();
+        document.getElementsByClassName("left-pane-text")[0].innerText =
+          "Saving your settings...";
+      }, 1000);
+      setTimeout(() => {
+        document.getElementsByClassName("left-pane-text")[0].innerText =
+          "Windows is shutting down...";
+      }, 1400);
+      setTimeout(() => {
+        window.location.href = "blank.html";
+      }, 5000);
+    </script>
+  </body>
 </html>

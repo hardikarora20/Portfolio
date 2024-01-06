@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="styles/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body bgcolor="black">
+  </head>
+  <body bgcolor="black">
     <div class="xp-container">
-        <div class="welcome-header" id="top-header"></div>
-        <div class="login-pane-container">
+      <div class="welcome-header" id="top-header"></div>
+      <div class="login-pane-container">
         <div class="left-login-pane login-pane">
-            <img src="essentials/images/logo.png" class="login-pane-logo">
-            <div class="left-pane-text">To begin, click your user name</div>
+          <img src="essentials/images/logo.png" class="login-pane-logo" />
+          <div class="left-pane-text">To begin, click your user name</div>
         </div>
         <div class="separator-line"></div>
         <div class="right-login-pane login-pane">
-            <div class="login-user pointer" onclick="clickHandler()">
-                <img src="essentials/images/user.jpg" class="user-icon">
-                <div class="user-name">Hardik</div>
-            </div>
+          <div class="login-user pointer" onclick="clickHandler()">
+            <img src="essentials/images/user.jpg" class="user-icon" />
+            <div class="user-name">Hardik</div>
+          </div>
         </div>
-        </div>
-        <div class="welcome-header" id="bottom-header"></div>
+      </div>
+      <div class="welcome-header" id="bottom-header"></div>
     </div>
     <script>
-        /* View in fullscreen */
-        function clickHandler() {
-            window.location.href = "welcome.html";
-            fullScreenFrame();
+      /* View in fullscreen */
+      function clickHandler() {
+        window.location.href = "welcome.html";
+        fullScreenFrame();
+      }
+      function fullScreenFrame() {
+        const elem = document.getElementsByTagName("body")[0];
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
         }
-        function fullScreenFrame() {
-            const elem = document.getElementsByTagName("body")[0];
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-        }
+      }
     </script>
-</body>
+  </body>
 </html>

@@ -153,7 +153,6 @@ function resumeNotepad(title, icon) {
   return createNewNotepad(title, defText, icon);
 }
 
-
 function createNewNotepad(title, defText, image) {
   var notepadInnerCode = `<div class="window-header">
     <div class="window-header-left">
@@ -180,61 +179,64 @@ function createNewNotepad(title, defText, image) {
     </ul>
     <div id="notepad-text" class="default" contenteditable="false">
     ${defText}
-    </div>`
+    </div>`;
   return notepadInnerCode;
 }
 
-function filesInFolder(title){
+function filesInFolder(title) {
   var fileList = [];
-  
 }
 
-function filesToDiv(title){
+function filesToDiv(title) {
   var fileList = [];
   var list = "";
   switch (title) {
     case "Projects":
-      fileList = ["split:Live Projects",
-      "Portfolio:web:hardikarora20.github.io/Portfolio",
-      "SimonGame:web:hardikarora20.github.io/Simon",
-      "Medley:web:hardikarora20.github.io/Medley",
-      "split:GitHub Repositories",
-      "Portfolio:HTML:github.com/hardikarora20/Portfolio",
-      "SimonGame:HTML:github.com/hardikarora20/Simon",
-      "CodeKeeper:java:github.com/hardikarora20/CodeKeeper", 
-      "CarePlus:java:github.com/hardikarora20/CarePlus", 
-      "Medley:HTML:github.com/hardikarora20/Medley"];
+      fileList = [
+        "split:Live Projects",
+        "Portfolio:web:hardikarora20.github.io/Portfolio",
+        "SimonGame:web:hardikarora20.github.io/Simon",
+        "Medley:web:hardikarora20.github.io/Medley",
+        "split:GitHub Repositories",
+        "Portfolio:HTML:github.com/hardikarora20/Portfolio",
+        "SimonGame:HTML:github.com/hardikarora20/Simon",
+        "CodeKeeper:java:github.com/hardikarora20/CodeKeeper",
+        "CarePlus:java:github.com/hardikarora20/CarePlus",
+        "Medley:HTML:github.com/hardikarora20/Medley",
+      ];
       break;
-      case "Profiles":
-      fileList = ["split:Social Profiles",
-                  "GitHub:github:github.com/hardikarora20",
-                  "LinkedIn:linkedin:linkedin.com/in/hardikarora20",
-                  "split:Coding Platforms",
-                  "LeetCode:leetcode:leetcode.com/hardikarora",
-                  "Coding Ninjas:leetcode:codingninjas.com/studio/profile/891b124a-8e82-48ae-9e30-2d3c5851a0b8",
-                  "GFG:leetcode:auth.geeksforgeeks.org/user/hardik20a",
-  ];
+    case "Profiles":
+      fileList = [
+        "split:Social Profiles",
+        "GitHub:github:github.com/hardikarora20",
+        "LinkedIn:linkedin:linkedin.com/in/hardikarora20",
+        "split:Coding Platforms",
+        "LeetCode:leetcode:leetcode.com/hardikarora",
+        "Coding Ninjas:leetcode:codingninjas.com/studio/profile/891b124a-8e82-48ae-9e30-2d3c5851a0b8",
+        "GFG:leetcode:auth.geeksforgeeks.org/user/hardik20a",
+      ];
       break;
     case "Contact":
-      fileList = ["Email:github:github.com/hardikarora20",
-                  "Resume:linkedin:linkedin.com/in/hardikarora20"];
+      fileList = [
+        "Email:github:github.com/hardikarora20",
+        "Resume:linkedin:linkedin.com/in/hardikarora20",
+      ];
       break;
   }
   console.log(fileList);
   var i = 0;
-  fileList.forEach(file => {
+  fileList.forEach((file) => {
     var titleLang = file.split(":");
     // console.log(titleLang[2]);
-    if(titleLang[0] == "split"){
-      if(i == 0){
+    if (titleLang[0] == "split") {
+      if (i == 0) {
         list += `             
                 <div class="folder-sections">
                     <div class="section-head">
                         <button class="section-title border-gradient-purple border-gradient">${titleLang[1]}</button>
                     </div>
                     <div class="folders-in-section">`;
-      }
-      else{
+      } else {
         list += `  
                 </div>           
                 <div class="folder-sections">
@@ -243,8 +245,7 @@ function filesToDiv(title){
                     </div>
                     <div class="folders-in-section">`;
       }
-    }
-    else{
+    } else {
       list += `
       <a href = "https://${titleLang[2]}" target = "_blank">
         <div class="folder pointer" id = "${titleLang[0]}">
@@ -287,83 +288,79 @@ function newWindow(type, title, icon) {
     console.log("clicked window");
   });
 
-// Making window draggable and also to not move it out of screen
-let isDragging = false;
-let offsetX, offsetY;
+  // Making window draggable and also to not move it out of screen
+  let isDragging = false;
+  let offsetX, offsetY;
 
-const windowHeader = document.querySelector("div.window .window-header");
-const windowElement = document.querySelector("div.window");
+  const windowHeader = document.querySelector("div.window .window-header");
+  const windowElement = document.querySelector("div.window");
 
-windowHeader.addEventListener("mousedown", startDragging);
-windowHeader.addEventListener("touchstart", startDragging);
+  windowHeader.addEventListener("mousedown", startDragging);
+  windowHeader.addEventListener("touchstart", startDragging);
 
-function startDragging(event) {
-  event.preventDefault();
+  function startDragging(event) {
+    event.preventDefault();
 
-  isDragging = true;
+    isDragging = true;
 
-  offsetX =
-    event.clientX -
-    parseFloat(getComputedStyle(windowElement).left);
-  offsetY =
-    event.clientY -
-    parseFloat(getComputedStyle(windowElement).top);
+    offsetX = event.clientX - parseFloat(getComputedStyle(windowElement).left);
+    offsetY = event.clientY - parseFloat(getComputedStyle(windowElement).top);
 
-  window.addEventListener("mousemove", dragWindow);
-  window.addEventListener("touchmove", dragWindow);
-  window.addEventListener("mouseup", stopDragging);
-  window.addEventListener("touchend", stopDragging);
-}
-
-function dragWindow(event) {
-  event.preventDefault();
-
-  if (isDragging) {
-    let clientX, clientY;
-
-    if (event.type === "mousemove") {
-      clientX = event.clientX;
-      clientY = event.clientY;
-    } else if (event.type === "touchmove" && event.touches.length === 1) {
-      const touch = event.touches[0];
-      clientX = touch.clientX;
-      clientY = touch.clientY;
-    }
-
-    let newX = clientX - offsetX;
-    let newY = clientY - offsetY;
-
-    const maxX =
-      window.innerWidth - parseFloat(getComputedStyle(windowElement).width);
-    const maxY =
-      window.innerHeight - parseFloat(getComputedStyle(windowElement).height);
-
-    newX = Math.min(Math.max(0, newX), maxX);
-    newY = Math.min(Math.max(0, newY), maxY);
-
-    windowElement.style.left = newX + "px";
-    windowElement.style.top = newY + "px";
+    window.addEventListener("mousemove", dragWindow);
+    window.addEventListener("touchmove", dragWindow);
+    window.addEventListener("mouseup", stopDragging);
+    window.addEventListener("touchend", stopDragging);
   }
-}
 
-function stopDragging() {
-  isDragging = false;
+  function dragWindow(event) {
+    event.preventDefault();
 
-  window.removeEventListener("mousemove", dragWindow);
-  window.removeEventListener("touchmove", dragWindow);
-  window.removeEventListener("mouseup", stopDragging);
-  window.removeEventListener("touchend", stopDragging);
-}
+    if (isDragging) {
+      let clientX, clientY;
 
-// In focus and out of focus windows
-document.addEventListener("mousedown", (event) => {
-  let selectedId = getSelectedIdFromEvent(event);
-  focusTask(selectedId);
-});
+      if (event.type === "mousemove") {
+        clientX = event.clientX;
+        clientY = event.clientY;
+      } else if (event.type === "touchmove" && event.touches.length === 1) {
+        const touch = event.touches[0];
+        clientX = touch.clientX;
+        clientY = touch.clientY;
+      }
 
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-});
+      let newX = clientX - offsetX;
+      let newY = clientY - offsetY;
+
+      const maxX =
+        window.innerWidth - parseFloat(getComputedStyle(windowElement).width);
+      const maxY =
+        window.innerHeight - parseFloat(getComputedStyle(windowElement).height);
+
+      newX = Math.min(Math.max(0, newX), maxX);
+      newY = Math.min(Math.max(0, newY), maxY);
+
+      windowElement.style.left = newX + "px";
+      windowElement.style.top = newY + "px";
+    }
+  }
+
+  function stopDragging() {
+    isDragging = false;
+
+    window.removeEventListener("mousemove", dragWindow);
+    window.removeEventListener("touchmove", dragWindow);
+    window.removeEventListener("mouseup", stopDragging);
+    window.removeEventListener("touchend", stopDragging);
+  }
+
+  // In focus and out of focus windows
+  document.addEventListener("mousedown", (event) => {
+    let selectedId = getSelectedIdFromEvent(event);
+    focusTask(selectedId);
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
 
   //close window
   document
@@ -612,15 +609,17 @@ setInterval(() => {
 // });
 var wallIndex = 0;
 function changeWallpaper() {
-  if(wallIndex == wallpapers.length)
-    wallIndex = 0;
-  document.getElementById("fixed-background").style.background = `url(../essentials/images/${wallpapers[wallIndex]})`;
+  if (wallIndex == wallpapers.length) wallIndex = 0;
+  document.getElementById(
+    "fixed-background"
+  ).style.background = `url(../essentials/images/${wallpapers[wallIndex]})`;
   wallIndex++;
 }
 
-
 function toggleStart() {
-  document.getElementsByClassName("start-menu-full")[0].classList.toggle("displayNone");
+  document
+    .getElementsByClassName("start-menu-full")[0]
+    .classList.toggle("displayNone");
 }
 
 var wallpapers = [
@@ -631,7 +630,7 @@ var wallpapers = [
   "Friend.jpg",
   "Tulips.jpg",
   "Stonehenge.jpg",
-  "wallpaper.webp"
+  "wallpaper.webp",
 ];
 
 //add out of focus (done)
