@@ -97,86 +97,62 @@ function createNewExplorer(title, image) {
 
 function resumeNotepad(title, icon) {
   const defText = `
-  RRRRR  EEEEE  SSSSS  U   U  M     M  EEEEE
-  R   R  E      S      U   U  M M M M  E
-  RRRRR  EEEE   SSSSS  U   U  M  M  M  EEEE
-  R  R   E          S  U   U  M     M  E
-  R   R  EEEEE  SSSSS  UUUUU  M     M  EEEEE
+  
+  <h2 class="center">HARDIK ARORA</h2>
+  <span class="center">Bhopal, India<br>
+  hardik.20.a@gmail.com
+  </span>
+  <div class = "line"></div>
+  
+  <h2 class="skills">SKILLS</h2>
+  Core Java
+  - Data Structures and Algorithms
+  - DBMS
+  - MySQL
+  - HTML
+  - CSS
+  - JavaScript
+  - Node JS
+  
+  <br><br>
+  
+  <h2>EDUCATION</h2>
+  <strong>Lakshmi Narain College of Technology,</strong> India<br>
+  B. Tech in Electronics and Communication Engg (Sep 2020 – Jun 2024)<br>
+  <strong>St. Xavier's Senior Secondary Co-Ed School,</strong> India<br>
+  Higher Secondary Education (Apr 2018 – Jun 2020)
 
-===============================================
+  <br><br>
+  <h2>PROJECTS</h2>
 
-  HARDIK ARORA
-  Bhopal, India
-  leetcode/hardikarora | linkedin/hardikarora20 | github/hardikarora | hardik.20.a@gmail.com
-
-  SKILLS  
-  - Core Java 
-  - Data Structures and Algorithms 
-  - DBMS 
-  - MySQL 
-  - HTML 
-  - CSS 
-  - JavaScript 
-  - Node JS 
-
-  EXPERIENCE 
-  Dec 2022 – Mar 2023
-  Summer Intern, A2infotech
-  • Collaborated on the CarePlus project, a Java based healthcare application, contributing to its development and implementation.
-  • Gained 90 hours of hands-on experience in software development, design, coding, testing, and implementation, by working on a real-world project.
-  • Demonstrated adaptability and innovative thinking in a professional setting, overcoming challenges that led to the project’s success.
-
-  EDUCATION 
-  Sep 2020 – Jun 2024
-  Lakshmi Narain College of Technology, India
-  • Bachelor of Technology in Electronics and Communication Engineering
-
-  Apr 2018 – Jun 2020
-  St. Xavier's Senior Secondary Co-Ed School, India
-  • Higher Secondary Education
-
-  PROJECTS 
-  April 2023
-  CarePlus, Java/SQL
-  Java Desktop Application
-  • Implemented a user-friendly eHospital system, achieving a significant 75% reduction in paperwork.
-  • Developed a Full-Stack desktop-based application consisting of 3 distinct interfaces tailored for admin, doctor, and receptionist to streamline communication.
-  • Integrated SMS API for appointments, ensuring prompt communication and minimizing no shows.
-  • Utilized Swing and AWT (Abstract Window Toolkit) as Java APIs for intuitive GUI programming.
-  • Established database connectivity with MySQL using JDBC.
-
-  December 2022
-  CodeKeeper, Java/SQL
-  Java Desktop Application
-  • Implemented a password manager application using Java SE and Swing-based application.
-  • Enabled password customization for users to create robust and unique passwords.
-  • Prioritized user data security through Base64 encryption, a custom algorithm, and offline access.
-  • Simplified interface reduces time spent on password-related tasks by 30%, improving user productivity.
-  • Utilized MySQL with JDBC for efficient data storage and retrieval.
-
-  September 2022
-  Medley, HTML/CSS/JS
-  Web Application
-  • Designed a music streaming website with over 100 tracks and near instantaneous playback.
-  • Included a recommendation system for random song suggestions, boosting user engagement.
-  • Applied advanced playback features, including seek options, loop controls, and shuffle functionality for enhancing music listening experience.
-  • Efficiently tracked recently played songs, allowing users to conveniently revisit their listening history.
-
-  ACHIEVEMENTS
-  LeetCode
-  • Achieved Global Rank 5244 out of 26000+ participants in Leetcode Weekly Contest 357.
-  • Solved 400+ problems on LeetCode on various DSA where more than 50 percent are of medium level.
-
-=========================================================================
-
-  H   H  AAAAA  RRRRR  DDDD   III  K   K      AAA   RRRRR  OOO  RRRRR  AAA
-  H   H  A   A  R   R  D   D   I   K  K      A   A  R   R O   O R   R A   A
-  HHHHH  AAAAA  RRRRR  D   D   I   KKK       AAAAA  RRRRR O   O RRRRR AAAAA
-  H   H  A   A  R  R   D   D   I   K  K      A   A  R  R  O   O R  R  A   A
-  H   H  A   A  R   R  DDDD   III  K   K     A   A  R   R  OOO  R   R A   A
-`;
+  <strong>SimonGame</strong>, HTML/CSS/JS/jQuery (Apr 2023)<br>
+ • Classic Simon game with improved memory and pattern recognition.<br>
+ • Enhanced gaming experience through engaging design and auditory elements.
+  <br>
+  <strong>CodeKeeper</strong>, Java/SQL (Apr 2023)<br>
+ • Secure password manager with features like generation and customization.<br>
+ • Prioritized user data security through encryption and a custom algorithm.
+  <br>
+  <strong>CarePlus</strong>, Java/SQL (Dec 2022 – Apr 2023)<br>
+ • Hospital management system streamlining operations for administrators, receptionists, and doctors.<br>
+ • Integrated secure database management and external system integration.
+  <br>
+  <strong>Medley</strong>, HTML/CSS/JS (Sep 2022)<br>
+ • Music streaming website with advanced controls and a rich collection of 100 songs.<br>
+ • Implemented features like seek options, loop controls and a smart recommendation system.<br>
+ • Utilized JavaScript and DOM for a seamless music streaming experience.
+  <br><br>
+  <h2>ACHIEVEMENTS</h2>
+  <strong>LeetCode</strong><br>
+  • Achieved Global Rank 5244 out of 26000+ participants in Leetcode Weekly Contest 357.<br>
+  • Solved 600+ problems on LeetCode on various DSA where more than 50 percent are of medium level.<br>
+ 
+  
+  
+  `;
   return createNewNotepad(title, defText, icon);
 }
+
 
 function createNewNotepad(title, defText, image) {
   var notepadInnerCode = `<div class="window-header">
@@ -202,9 +178,9 @@ function createNewNotepad(title, defText, image) {
         <li class = "pointer"><U>O</U>pen in new tab</li>
         </a>
     </ul>
-    <textarea id="notepad-text" class="default" disabled>
-        ${defText}
-    </textarea>`;
+    <div id="notepad-text" class="default" contenteditable="false">
+    ${defText}
+    </div>`
   return notepadInnerCode;
 }
 
@@ -634,6 +610,29 @@ setInterval(() => {
     ampm;
 }, 1000);
 // });
+var wallIndex = 0;
+function changeWallpaper() {
+  if(wallIndex == wallpapers.length)
+    wallIndex = 0;
+  document.getElementById("fixed-background").style.background = `url(../essentials/images/${wallpapers[wallIndex]})`;
+  wallIndex++;
+}
+
+
+function toggleStart() {
+  document.getElementsByClassName("start-menu-full")[0].classList.toggle("displayNone");
+}
+
+var wallpapers = [
+  "Ascent.jpg",
+  "Autumn.jpg",
+  "Azul.jpg",
+  "Follow.jpg",
+  "Friend.jpg",
+  "Tulips.jpg",
+  "Stonehenge.jpg",
+  "wallpaper.webp"
+];
 
 //add out of focus (done)
 //fix taskbar apps (done)
@@ -650,4 +649,4 @@ setInterval(() => {
 // and rest folder/file will lead to different sections
 
 // add welcome screen (done)
-// add startmenu with the same shortcuts and shutdown page 
+// add startmenu with the same shortcuts and shutdown page (done)

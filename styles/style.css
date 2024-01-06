@@ -76,12 +76,16 @@ body{
                                     supported by Chrome, Edge, Opera and Firefox */
   }
 
-#fixed-background{
-    width: 100vw;
-    height: 100vh;
+  #fixed-background {
     position: fixed;
-    background: url(../essentials/images/wallpaper.webp);
-    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../essentials/images/wallpaper.webp);
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 
 .fixed-background-splash{
@@ -691,11 +695,12 @@ img#task-icon{
 }
 
 ul.window-toolbar{
+    gap: 2vh;
     display: flex;
     align-items: center;
     justify-content: normal;
     background-color: #efebde;
-    padding-left: 1vh;
+    padding-left: 2vh;
 }
 
 .window-toolbar li{
@@ -723,7 +728,7 @@ ul.window-toolbar{
     position: relative;
     height: 8vh;
     width: 100%;
-    padding: 5px 0px;
+    padding: 1vh 1vh;
     display: flex;
     background-color: #efeede;
     overflow: hidden;
@@ -778,17 +783,58 @@ ul.window-toolbar{
     background: linear-gradient(90deg, rgba(93,166,255,1) 0%, rgba(93,166,255,1) 55%, rgba(255,255,255,0) 100%);
 }
 
-.window textarea{
+.window #notepad-text{
+    line-height: 2.3vh;
     /* font-family: 'Tahoma'; */
+    position: relative;
+    padding: 2vh;
+    box-sizing: border-box;
     font-size: 2vh;
+    font-family: tahoma;
+    color: black;
     overflow-x: hidden;
     border-radius: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
     width: 100%;
     resize: none; 
     outline: none;
     border-top: 1px solid #7b9ebd;
+}
+
+#notepad-text h2{
+    margin: 1vh 0vh;
+    font-weight: 600;
+    font-size: 3vh;
+}
+
+#notepad-text strong{
+    line-height: 4vh;
+    /* font-weight: 550; */
+    text-decoration: underline;
+    /* font-size: 2.5vh; */
+}
+
+#notepad-text .line{
+    background-color: black;
+    width: 100%;
+    margin: 2vh 0vh;
+    height: 2px;
+}
+
+#notepad-text .center{
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+#notepad-text span{
+    /* text-align: center; */
+}
+
+#notepad-text pre{
+    font-family: consolas;
+    font-size: 2vh;
 }
 
 .fulldisplay{
@@ -843,7 +889,8 @@ ul.window-toolbar{
     flex-direction: column;
     align-items: center;
     gap: 4vh;
-    padding: 1.5vh;
+    box-sizing: border-box;
+    padding: 2vh;
     margin: 1vh;
     top: 0;
     left: 0;
