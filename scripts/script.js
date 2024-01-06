@@ -612,7 +612,7 @@ function changeWallpaper() {
   if (wallIndex == wallpapers.length) wallIndex = 0;
   document.getElementById(
     "fixed-background"
-  ).style.background = `url(../essentials/images/${wallpapers[wallIndex]})`;
+  ).style.background = `url(essentials/images/wallpapers/${wallpapers[wallIndex]})`;
   wallIndex++;
 }
 
@@ -626,11 +626,16 @@ var wallpapers = [
   "Ascent.jpg",
   "Autumn.jpg",
   "Azul.jpg",
+  "Bliss.jpg",
   "Follow.jpg",
   "Friend.jpg",
-  "Tulips.jpg",
+  "Moon flower.jpg",
+  "Radiance.jpg",
+  "Red moon desert.jpg",
   "Stonehenge.jpg",
-  "wallpaper.webp",
+  "Tulips.jpg",
+  "Vortec space.jpg",
+  "Wind.jpg",
 ];
 
 //add out of focus (done)
